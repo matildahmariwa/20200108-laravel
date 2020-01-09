@@ -57,11 +57,12 @@ class TasksController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+//        var_dump($request->input('id'));
         //delete task
-        $task=Task::find($id);
+        $task=Task::find($request->input('id'));
         $task->delete();
-        return redirect('/dashboard')->with('success','Task deleted successfully');
+        return view('welcome')->with('success','Task deleted successfully');
     }
 }

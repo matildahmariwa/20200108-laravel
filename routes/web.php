@@ -17,6 +17,12 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
-//Route::get('/', 'TasksController@ShowTasks');
+Route::post('/delete', 'TasksController@destroy');
+//Route::get('/{id}/delete', [
+//
+//    'uses' => 'TasksController@destroy',
+//    'as' => 'admin.users.edit'
+//]);
 
 Route::post('/taskSave', 'TasksController@store');
+Route::resource('tasks', 'TasksController');
